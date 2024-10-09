@@ -1,6 +1,7 @@
 const express = require('express');
 const mongoose = require('mongoose');
 const dotenv = require('dotenv');
+const authRoutes = require('./routes/auth');
 const bodyParser = require('body-parser');
 
 // Initialize dotenv
@@ -11,6 +12,8 @@ const app = express();
 
 // Use body-parser to handle form submissions
 app.use(bodyParser.json());
+
+app.use('/api/auth', authRoutes);
 
 // Basic route to check if server is running
 app.get('/', (req, res) => {
