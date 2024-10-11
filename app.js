@@ -2,6 +2,7 @@ const express = require('express');
 const mongoose = require('mongoose');
 const dotenv = require('dotenv');
 const authRoutes = require('./routes/auth');
+const postRoutes = require('./routes/posts');
 const bodyParser = require('body-parser');
 
 // Initialize dotenv
@@ -13,14 +14,12 @@ const app = express();
 // Use body-parser to handle form submissions
 app.use(bodyParser.json());
 
-app.use('/api/auth', authRoutes);
-
 // Basic route to check if server is running
 app.get('/', (req, res) => {
    res.send('Welcome to Intelvibez Blog Platform!');
 });
 
-// Connect to MongoDB (replace with your MongoDB URI in .env)
+// Connect to MongoDB
 mongoose.connect(process.env.MONGO_URI, {
    useNewUrlParser: true,
    useUnifiedTopology: true,
@@ -29,6 +28,10 @@ mongoose.connect(process.env.MONGO_URI, {
 }).catch((err) => {
    console.log('Error connecting to MongoDB', err);
 });
+
+// Using the auth and post routes
+app.use('/api/auth', authRoutes);
+app.use('/api/posts', postRoutes);
 
 // Start the server
 const PORT = process.env.PORT || 5000;
