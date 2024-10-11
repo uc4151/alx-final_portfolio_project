@@ -3,6 +3,7 @@ const mongoose = require('mongoose');
 const dotenv = require('dotenv');
 const authRoutes = require('./routes/auth');
 const postRoutes = require('./routes/posts');
+const commentRoutes = require('./routes/comments');
 const bodyParser = require('body-parser');
 
 // Initialize dotenv
@@ -29,9 +30,10 @@ mongoose.connect(process.env.MONGO_URI, {
    console.log('Error connecting to MongoDB', err);
 });
 
-// Using the auth and post routes
+// Using the routes
 app.use('/api/auth', authRoutes);
 app.use('/api/posts', postRoutes);
+app.use('/api/comments', commentRoutes);
 
 // Start the server
 const PORT = process.env.PORT || 5000;
