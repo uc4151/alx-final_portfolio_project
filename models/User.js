@@ -20,6 +20,14 @@ const UserSchema = new mongoose.Schema({
         type: String,
         required: true,
     },
+    resetToken: {          // Field for password reset token
+        type: String,
+        default: null,
+    },
+    resetTokenExpiration: { // Field for token expiration time
+        type: Date,
+        default: null,
+    },
 }, {
     timestamps: true, // Automatically adds createdAt and updatedAt timestamps
 });
