@@ -1,3 +1,4 @@
+/**
 import React, { useState } from 'react';
 import axios from 'axios';
 import { useHistory } from 'react-router-dom';
@@ -36,5 +37,24 @@ const Login = () => {
     </div>
   );
 };
+
+export default Login;
+*/
+
+// src/components/auth/Login.js
+import React from 'react';
+
+function Login() {
+  return (
+    <div>
+      <h1>Login Page</h1>
+      <form>
+        <input type="email" placeholder="Enter your email" />
+        <input type="password" placeholder="Enter your password" />
+        <button type="submit">Login</button>
+      </form>
+    </div>
+  );
+}
 
 export default Login;
